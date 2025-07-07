@@ -26,7 +26,7 @@ const Login = () => {
             <Label content='Avengine Workshop' sxStyle={{textAlign : "center"}}  textAlign={'center'}  variant='h4' />
              <Label content='Sign in to your account' sxStyle={{textAlign : "center"}}  textAlign={'center'}  variant='subtitle1' />
             <Input placeholder='e.g. Joe' sxStyle={{width : '100%',}} errors={errors} id='username' name='username' register={register} label='Username or Email-address' />
-            <Input type='password' placeholder='e.g. 12345678' sxStyle={{width : '100%'}} errors={errors} id='password' name='password' register={register} label='Password' />
+            <Input type='password' placeholder='e.g. Some#2323)_.' sxStyle={{width : '100%'}} errors={errors} id='password' name='password' register={register} label='Password' />
            <Link className='self-end text-sm hover:underline' to={'/forgot-password'}>Forgot password?</Link>
             <ButtonComponent disabled={isLoading} sxStyle={{padding : 1.2}}  label='Login' onClick={handleSubmit(handleLogin)}   />
             <div className={clsx('flex items-center gap-3 justify-center')}>

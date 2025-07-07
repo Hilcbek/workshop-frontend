@@ -29,7 +29,7 @@ const Register = () => {
             <Label content='Create your account' sxStyle={{textAlign : "center"}}  textAlign={'center'}  variant='subtitle1' />
             <Input placeholder='e.g. Joe' sxStyle={{width : '100%',}} errors={errors} id='username' name='username' register={register} label='Username' />
             <Input placeholder='e.g. balem@gmail.com' sxStyle={{width : '100%'}} errors={errors} id='email' name='email' register={register} label='Email' />
-            <Input type='password' placeholder='e.g. 12345678' sxStyle={{width : '100%'}} errors={errors} id='password' name='password' register={register} label='Password' />
+        <Input type='password' placeholder='e.g. Some#2323)_.' sxStyle={{width : '100%'}} errors={errors} id='password' name='password' register={register} label='Password' />
         <ButtonComponent disabled={isLoading} sxStyle={{padding : 1.2}}  label='Register' onClick={handleSubmit(handleRegister)}   />
             <div className={clsx('flex items-center gap-1 justify-center')}>
             <Label content="Already have an account?" sxStyle={{textAlign : "center", height : 'fit-content', mt : 1, fontStyle :"italic"}}  textAlign={'center'}  variant='subtitle2' />    
