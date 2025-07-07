@@ -5,11 +5,12 @@ import ButtonComponent from '../components/button'
 import Label from '../components/label'
 import { Link } from 'react-router-dom'
 import type { userInputSchemaType } from '../toolkit/users/types'
-import type { AppDispatch, } from '../toolkit/store'
-import { useDispatch, } from 'react-redux'
+import type { AppDispatch, RootState, } from '../toolkit/store'
+import { useDispatch, useSelector, } from 'react-redux'
 import { userThunk } from '../toolkit/users/thunk'
 import Cookies from 'js-cookie'
 const Login = () => {
+    const {isLoading} = useSelector((state:RootState) => state.userSlice)
     const {register, formState : {errors}, handleSubmit} = useForm<userInputSchemaType>()
     const dispatch : AppDispatch = useDispatch()
     const handleLogin : SubmitHandler<Omit<userInputSchemaType, 'email'>> = async (data:  Omit<userInputSchemaType, 'email'>) => {
@@ -27,7 +28,7 @@ const Login = () => {
             <Input placeholder='e.g. Joe' sxStyle={{width : '100%',}} errors={errors} id='username' name='username' register={register} label='Username or Email-address' />
             <Input placeholder='e.g. 12345678' sxStyle={{width : '100%'}} errors={errors} id='password' name='password' register={register} label='Password' />
            <Link className='self-end text-sm hover:underline' to={'/forgot-password'}>Forgot password?</Link>
-            <ButtonComponent sxStyle={{padding : 1.2}}  label='Login' onClick={handleSubmit(handleLogin)}   />
+            <ButtonComponent disabled={isLoading} sxStyle={{padding : 1.2}}  label='Login' onClick={handleSubmit(handleLogin)}   />
             <div className={clsx('flex items-center gap-3 justify-center')}>
                 <Label content="Don't have an account?" sxStyle={{textAlign : "center", height : 'fit-content', mt : 1, fontStyle :"italic"}}  textAlign={'center'}  variant='subtitle2' />    
                 <Link to={'/register'}  >Register</Link>
