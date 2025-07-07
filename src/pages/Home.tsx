@@ -6,7 +6,7 @@ import { ArrowForward } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-[#f0f4ff] via-white to-[#eaf1ff] text-gray-900 px-6 md:px-16 py-12">
+    <main className="md:h-[80vh] bg-gradient-to-br from-[#f0f4ff] via-white to-[#eaf1ff] text-gray-900 px-6 md:px-16 py-12">
       <motion.section
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
