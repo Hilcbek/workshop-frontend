@@ -61,9 +61,9 @@ const getSingleTimeSlotsThunk = createAsyncThunk(
 )
 const updateTimeSlotThunk = createAsyncThunk(
     'timeSlot/updateTimeSlot',
-    async ({ id, endDate, startDate }: { id: string; startDate : string , endDate : string } , thunkApi) => {
+    async ({ id, endDate, startDate, maxCapacity }: { id: string; startDate : string , endDate : string, maxCapacity : number } , thunkApi) => {
         try {
-            const response = await timeSlotApi.updateTimeSlot(id , {startTime : startDate , endTime : endDate})
+            const response = await timeSlotApi.updateTimeSlot(id , {startTime : startDate , endTime : endDate, maxCapacity :maxCapacity})
             return response;
         } catch (error) {
             if (error instanceof AxiosError && error.response) {

@@ -29,8 +29,8 @@ const getSingleTimeSlot = async (id: string) => {
   const response = await baseURL.get(`/time-slot/${id}`, getAuthHeader())
   return response.data
 }
-const updateTimeSlot = async (id: string,{startTime , endTime} : {startTime : string , endTime : string}) => {
-  const response = await baseURL.patch(`/time-slot/${id}`, {startTime , endTime}, getAuthHeader())
+const updateTimeSlot = async (id: string,{startTime , endTime,maxCapacity} : {startTime : string , endTime : string, maxCapacity : number}) => {
+  const response = await baseURL.patch(`/time-slot/${id}`, {startTime , endTime, maxCapacity}, getAuthHeader())
   return response.data
 }
 const deleteTimeSlot = async (id: string,) => {

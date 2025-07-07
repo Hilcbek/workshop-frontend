@@ -18,6 +18,7 @@ import type { AppDispatch, RootState } from '../../toolkit/store';
 const schema = z.object({
   startTime: z.string().min(1, 'Start time is required'),
   endTime: z.string().min(1, 'End time is required'),
+  maxCapacity : z.string().min(1, 'Max capacity is required').optional()
 });
 
 type FormData = z.infer<typeof schema>;
@@ -33,8 +34,11 @@ const UpdateTimeSlot = () => {
     defaultValues: {
       startTime: '',
       endTime: '',
+      maxCapacity : '1'
     },
   });
+
+  console.log(data?.data[0].maxCapacity)
 
   // Fetch existing time slot
   const fetchTimeSlot = useCallback(async () => {
@@ -50,6 +54,7 @@ const UpdateTimeSlot = () => {
       reset({
         startTime: data?.data[0].startTime || '',
         endTime: data?.data[0].endTime || '',
+        maxCapacity: String(data?.data[0].maxCapacity)
       });
     }
   }, [data, reset]);
@@ -58,7 +63,8 @@ const UpdateTimeSlot = () => {
     const res = await dispatch(timeSlotThunk.updateTimeSlotThunk({
       id: timeSlotId,
       startDate : formValues.startTime,
-      endDate : formValues.endTime
+      endDate: formValues.endTime,
+      maxCapacity: Number(formValues.maxCapacity!)
     })).unwrap();
 
     if (res.status === 200) {
@@ -101,6 +107,14 @@ const UpdateTimeSlot = () => {
             {...register('endTime')}
             error={!!errors.endTime}
             helperText={errors.endTime?.message}
+            />
+            
+            <TextField
+            label="Max capacity"
+            fullWidth
+            {...register('maxCapacity')}
+            error={!!errors.maxCapacity}
+            helperText={errors.maxCapacity?.message}
           />
 
           <Button variant="contained" type="submit" color="primary">
