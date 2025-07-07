@@ -50,6 +50,7 @@ const AllBooking = () => {
     timeSlotId: string
   ) => {
     setStatusMap((prev) => ({ ...prev, [id]: newStatus }));
+    console.log('newStatus ',newStatus)
     await dispatch(
       bookingThunk.updateBookingThunk({
         id,

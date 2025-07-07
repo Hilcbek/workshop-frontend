@@ -20,6 +20,10 @@ const RoleBasedRoute = ({
   const isAuthenticated = useSelector(
     (state: RootState) => state.userSlice.isLoggedIn
   );
+  const { isLoggedInLoading } = useSelector((state: RootState) => state.userSlice)
+  if (isLoggedInLoading) {
+    return null
+  }
   if (auth === "must" && !isAuthenticated) {
     return <NotAuthorizedPage />;
   }

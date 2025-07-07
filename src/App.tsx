@@ -6,6 +6,7 @@ import { Toaster } from 'sonner'
 import type { AppDispatch } from './toolkit/store'
 import { useDispatch } from 'react-redux'
 import { userThunk } from './toolkit/users/thunk'
+const NotFound = lazy(() => import('./pages/NotFound'))
 const SpinnersComponent = lazy(() => import('./components/Spinner'))
 const RoleBasedRoute = lazy(() => import('./hooks/RoleBasedRoute'))
 const AdminContainer = lazy(() => import('./pages/Admin/AdminContainer'))
@@ -95,9 +96,14 @@ const router = createBrowserRouter([
       {
         path :'my-bookings',
         element: <RoleBasedRoute auth='must' component={MyBooking} requiredRoles={['user']} />
+      },
+      {
+        path: "*",
+        element : <NotFound />
       }
-    ]
-  }
+    ],
+  },
+  
 ])
 function App() {
   const dispatch: AppDispatch = useDispatch()
