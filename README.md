@@ -99,6 +99,7 @@ This project uses React Router with role-based access control for Admin and Cust
 | `/admin/add-timeslot`       | Must (Admin) | Add a new time slot                                     |
 | `/admin/update-timeslot`    | Must (Admin) | Update existing time slot                               |
 
+
 ---
 
 ### ✅ 404 Not Found Page
@@ -122,3 +123,7 @@ This project uses React Router with role-based access control for Admin and Cust
 - All **/admin/** routes are protected with `RoleBasedRoute` to require **admin** role.
 - Customer routes also use `RoleBasedRoute` to protect booking pages.
 - Fallback 404 page renders for any unmatched path.
+
+
+ADMIN - aman
+password - Aman@1212

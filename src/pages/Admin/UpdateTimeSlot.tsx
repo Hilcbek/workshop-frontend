@@ -55,13 +55,15 @@ const UpdateTimeSlot = () => {
   }, [data, reset]);
 
   const onSubmit = async (formValues: FormData) => {
-    await dispatch(timeSlotThunk.updateTimeSlotThunk({
+    const res = await dispatch(timeSlotThunk.updateTimeSlotThunk({
       id: timeSlotId,
       startDate : formValues.startTime,
       endDate : formValues.endTime
-    }));
+    })).unwrap();
 
-    navigate('/admin/all-timeslots'); // Adjust path as needed
+    if (res.status === 200) {
+      navigate('/admin/all-timeslots'); // Adjust path as needed
+    }
   };
 
   return (
