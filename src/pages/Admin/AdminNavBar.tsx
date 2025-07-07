@@ -20,23 +20,25 @@ const iconMap: Record<string, JSX.Element> = {
     'update-timeslot': <UpdateIcon fontSize="small" className="mr-2" />,
 };
 
-
 const AdminNavBar = () => {
     const location = useLocation();
 
     return (
         <nav className="mt-6 px-4">
-            <ul className="flex flex-wrap justify-center gap-3">
+            <ul className="
+        flex flex-col gap-2
+        sm:flex-row sm:flex-wrap sm:justify-center sm:gap-3
+      ">
                 {adminNav.map((link: adminNavProps) => {
                     const isActive = location.pathname === link.path;
                     const key = link.path.split('/').pop() || 'dashboard';
 
                     return (
-                        <li key={link.path}>
+                        <li key={link.path} className="w-full sm:w-auto">
                             <Link
                                 to={link.path}
                                 className={clsx(
-                                    'inline-flex items-center text-sm font-medium px-4 py-2 rounded-md border transition-colors duration-200',
+                                    'w-full sm:w-auto inline-flex items-center justify-center text-sm font-medium px-4 py-2 rounded-md border transition-colors duration-200',
                                     isActive
                                         ? 'bg-primaryColor text-white border-primaryColor'
                                         : 'text-primaryColor border border-primaryColor hover:bg-primaryColor hover:text-white'
