@@ -46,26 +46,27 @@ export default function Home() {
             icon: '🗓️',
           },
           {
-            title: 'Real-time Bookings',
-            desc: 'Participants can view availability and book workshops instantly.',
+            title: 'Fast Booking Requests',
+            desc: 'Participants can quickly send booking requests and get rapid confirmations.',
             icon: '⚡',
           },
           {
-            title: 'Analytics & Insights',
-            desc: 'Gain insights into attendance, preferences, and engagement trends.',
+            title: 'Admin Analytics',
+            desc: 'Admins can review attendance data and engagement trends for better planning.',
             icon: '📊',
-          },
-        ].map(({ title, desc, icon }) => (
-          <motion.div
-            key={title}
-            whileHover={{ scale: 1.03 }}
-            className="bg-white rounded-2xl shadow-md p-6 text-left transition duration-300 border hover:border-[#0070f3]"
-          >
-            <div className="text-4xl mb-4">{icon}</div>
-            <h3 className="text-xl font-semibold mb-2">{title}</h3>
-            <p className="text-gray-600">{desc}</p>
-          </motion.div>
-        ))}
+          }
+        ]
+          .map(({ title, desc, icon }) => (
+            <motion.div
+              key={title}
+              whileHover={{ scale: 1.03 }}
+              className="bg-white rounded-2xl shadow-md p-6 text-left transition duration-300 border hover:border-[#0070f3]"
+            >
+              <div className="text-4xl mb-4">{icon}</div>
+              <h3 className="text-xl font-semibold mb-2">{title}</h3>
+              <p className="text-gray-600">{desc}</p>
+            </motion.div>
+          ))}
       </section>
     </main>
   );
