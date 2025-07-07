@@ -117,7 +117,7 @@ function App() {
     <>
       <Toaster closeButton position='top-right' toastOptions={{ duration: 3000, }} />
       <Suspense fallback={<div className={clsx(`w-full h-screen flex justify-center items-center`)}>
-        <SpinnersComponent loading={true} size={60} />
+        <SpinnersComponent loading={true} size={40} />
       </div>}>
         <RouterProvider router={router} />
       </Suspense>
