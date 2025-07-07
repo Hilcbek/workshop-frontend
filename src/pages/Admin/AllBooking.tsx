@@ -101,17 +101,17 @@ const AllBooking = () => {
               </TableHead>
               <TableBody>
                 {paginatedBookings.map((booking: bookingProps) => {
-                  const currentStatus = statusMap[booking.id] ?? booking.status;
+                  const currentStatus = statusMap[booking?.id] ?? booking?.status;
                   return (
-                    <TableRow key={booking.id} hover>
-                      <TableCell>{booking.id}</TableCell>
-                      <TableCell>{booking.user?.username}</TableCell>
-                      <TableCell>{booking.workshop?.title}</TableCell>
+                    <TableRow key={booking?.id} hover>
+                      <TableCell>{booking?.id}</TableCell>
+                      <TableCell>{booking?.user?.username}</TableCell>
+                      <TableCell>{booking?.workshop?.title}</TableCell>
                       <TableCell>
-                        {booking.timeSlot?.startTime} - {booking.timeSlot?.endTime}
+                        {booking?.timeSlot?.startTime} - {booking?.timeSlot?.endTime}
                       </TableCell>
                       <TableCell>
-                        {new Date(booking.workshop?.date ?? '').toLocaleDateString()}
+                        {new Date(booking?.workshop?.date ?? '').toLocaleDateString()}
                       </TableCell>
                       <TableCell>
                         <Chip
@@ -128,7 +128,7 @@ const AllBooking = () => {
                         />
                       </TableCell>
                       <TableCell>
-                        {new Date(booking.createdAt).toLocaleString()}
+                        {new Date(booking?.createdAt).toLocaleString()}
                       </TableCell>
                       <TableCell>
                        {updateing ? <CircularProgress size={20} /> : <Select
@@ -136,9 +136,9 @@ const AllBooking = () => {
                           value={currentStatus}
                           onChange={(e: SelectChangeEvent) =>
                             handleStatusChange(
-                              booking.id,
+                              booking?.id,
                               e.target.value as 'pending' | 'confirmed' | 'cancelled',
-                              booking.timeSlotId
+                              booking?.timeSlotId
                             )
                           }
                           sx={{ minWidth: 120 }}
@@ -150,7 +150,7 @@ const AllBooking = () => {
                       </TableCell>
                       <TableCell>
                         <Delete
-                          onClick={() => deleteBookingsHandler(booking.id)}
+                          onClick={() => deleteBookingsHandler(booking?.id)}
                           sx={{
                             color: 'error.main',
                             cursor: 'pointer',
