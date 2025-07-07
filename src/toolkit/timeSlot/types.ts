@@ -1,6 +1,6 @@
 import z from "zod"
-import type { Booking } from '../../../../backend/src/generated/prisma/index';
 import type { workshopProps } from "../workshop/types";
+import type { bookingProps } from "../bookings/types";
 
 export interface timeSlotProps {
     id: string
@@ -9,7 +9,7 @@ export interface timeSlotProps {
     maxCapacity: number
     workshop: workshopProps
     workshopId: string
-    bookings: Booking[]
+    bookings: bookingProps[]
     isDeleted: string
 }
 export interface timeSlotResponseProps {
