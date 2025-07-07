@@ -66,9 +66,9 @@ const AllBooking = () => {
     await dispatch(bookingThunk.deleteBookingThunk(id));
   };
 
-  const totalBookings = bookings?.data || [];
-  const totalPages = Math.ceil(totalBookings?.length / LIMIT);
-  const paginatedBookings = totalBookings?.slice((page - 1) * LIMIT, page * LIMIT);
+  const totalBookings = Array.isArray(bookings?.data) ? bookings.data : [];
+  const totalPages = Math.ceil(totalBookings.length / LIMIT);
+  const paginatedBookings = totalBookings.slice((page - 1) * LIMIT, page * LIMIT);
 
   return (
     <Box px={4} py={6}>
@@ -76,7 +76,7 @@ const AllBooking = () => {
         <Box display="flex" justifyContent="center" mt={4}>
           <CircularProgress />
         </Box>
-      ) : !totalBookings.length ? (
+      ) : !totalBookings?.length ? (
         <Typography align="center" mt={4}>No bookings found.</Typography>
       ) : (
         <>
