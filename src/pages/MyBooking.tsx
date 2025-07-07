@@ -51,81 +51,88 @@ const MyBooking = () => {
 
   return (
     <Box px={4} py={6}>
-      <Typography variant="h4" gutterBottom>
-        My Bookings
-      </Typography>
 
       {isLoading ? (
         <Box display="flex" justifyContent="center" mt={4}>
           <CircularProgress />
         </Box>
       ) : bookings && bookings?.data?.length === 0 ? (
-        <Typography mt={2}>No bookings found.</Typography>
+          <Box display="flex" justifyContent="center" mt={4}>
+            <Typography mt={2}>No bookings found.</Typography>
+          </Box>
+        
       ) : (
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: {
-              xs: '1fr',
-              sm: '1fr 1fr',
-              md: '1fr 1fr 1fr',
-            },
-            gap: 3,
-            mt: 2,
-          }}
-        >
-          {bookings?.data.map((booking) => (
-            <Card key={booking.id} variant="outlined" sx={{ borderRadius: 3, p: 1.5 }}>
-              <CardContent>
-                <Stack spacing={1.5}>
-                  <Box display="flex" justifyContent="space-between" alignItems="center">
-                    <Typography variant="h6" fontWeight={600}>
-                      <BookmarkIcon sx={{ fontSize: 20, mr: 1, verticalAlign: 'middle' }} />
-                      {booking?.workshop?.title}
-                    </Typography>
-                    <Stack direction="row" spacing={1}>
-                      <Tooltip title="Edit">
-                        <IconButton color="primary" size="small" onClick={() => navigate('/update-booking', {state : {bookingId: booking.id}})}>
-                          <EditIcon fontSize="small" />
-                        </IconButton>
-                      </Tooltip>
-                      <Tooltip title="Delete">
-                        <IconButton color="error" size="small" onClick={() => handleDelete(booking.id)}>
-                          <DeleteIcon fontSize="small" />
-                        </IconButton>
-                      </Tooltip>
+        <>
+          <Typography variant="h4" gutterBottom>
+            My Bookings
+          </Typography>
+
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: {
+                xs: '1fr',
+                sm: '1fr 1fr',
+                md: '1fr 1fr 1fr',
+              },
+              gap: 3,
+              mt: 2,
+            }}
+          >
+            {bookings?.data.map((booking) => (
+              <Card key={booking.id} variant="outlined" sx={{ borderRadius: 3, p: 1.5 }}>
+                <CardContent>
+                  <Stack spacing={1.5}>
+                    <Box display="flex" justifyContent="space-between" alignItems="center">
+                      <Typography variant="h6" fontWeight={600}>
+                        <BookmarkIcon sx={{ fontSize: 20, mr: 1, verticalAlign: 'middle' }} />
+                        {booking?.workshop?.title}
+                      </Typography>
+                      <Stack direction="row" spacing={1}>
+                        <Tooltip title="Edit">
+                          <IconButton color="primary" size="small" onClick={() => navigate('/update-booking', { state: { bookingId: booking.id } })}>
+                            <EditIcon fontSize="small" />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Delete">
+                          <IconButton color="error" size="small" onClick={() => handleDelete(booking.id)}>
+                            <DeleteIcon fontSize="small" />
+                          </IconButton>
+                        </Tooltip>
+                      </Stack>
+                    </Box>
+
+                    <Stack direction="row" spacing={1} alignItems="center">
+                      <CalendarMonthIcon color="action" fontSize="small" />
+                      <Typography color="text.secondary">
+                        {new Date(booking?.workshop?.date ?? '').toLocaleDateString()}
+                      </Typography>
                     </Stack>
-                  </Box>
 
-                  <Stack direction="row" spacing={1} alignItems="center">
-                    <CalendarMonthIcon color="action" fontSize="small" />
-                    <Typography color="text.secondary">
-                      {new Date(booking?.workshop?.date ?? '').toLocaleDateString()}
+                    <Stack direction="row" spacing={1} alignItems="center">
+                      <AccessTimeIcon color="action" fontSize="small" />
+                      <Typography color="text.secondary">
+                        {booking?.timeSlot?.startTime} - {booking?.timeSlot?.endTime}
+                      </Typography>
+                    </Stack>
+
+                    <Chip
+                      label={booking.status.toUpperCase()}
+                      color={statusColors[booking.status] ?? 'default'}
+                      size="small"
+                      sx={{ width: 'fit-content', mt: 1 }}
+                    />
+
+                    <Typography color="text.secondary" fontSize={12}>
+                      Created At: {new Date(booking.createdAt).toLocaleString()}
                     </Typography>
                   </Stack>
+                </CardContent>
+              </Card>
+            ))}
+          </Box>
+        </>
 
-                  <Stack direction="row" spacing={1} alignItems="center">
-                    <AccessTimeIcon color="action" fontSize="small" />
-                    <Typography color="text.secondary">
-                      {booking?.timeSlot?.startTime} - {booking?.timeSlot?.endTime}
-                    </Typography>
-                  </Stack>
-
-                  <Chip
-                    label={booking.status.toUpperCase()}
-                    color={statusColors[booking.status] ?? 'default'}
-                    size="small"
-                    sx={{ width: 'fit-content', mt: 1 }}
-                  />
-
-                  <Typography color="text.secondary" fontSize={12}>
-                    Created At: {new Date(booking.createdAt).toLocaleString()}
-                  </Typography>
-                </Stack>
-              </CardContent>
-            </Card>
-          ))}
-        </Box>
       )}
     </Box>
   );
