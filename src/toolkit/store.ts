@@ -6,6 +6,7 @@ import userSlice from './users/slice';
 import timeSlotSlice from './timeSlot/slice';
 import bookingSlice from './bookings/slice';
 import workShopSlice from './workshop/slice';
+import analyticsSlice from './analytics/slice';
 
 const persistConfig = {
     key: 'root',
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     userSlice,
     timeSlotSlice,
     bookingSlice,
-    workShopSlice
+    workShopSlice,
+    analyticsSlice
 })
 const persistReducers = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
