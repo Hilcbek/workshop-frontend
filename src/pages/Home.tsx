@@ -60,7 +60,7 @@ export default function Home() {
             <motion.div
               key={title}
               whileHover={{ scale: 1.03 }}
-              className="bg-white rounded-2xl shadow-md p-6 text-left transition duration-300 border hover:border-[#0070f3]"
+              className="bg-white rounded-2xl shadow-md p-6 text-left transition duration-300"
             >
               <div className="text-4xl mb-4">{icon}</div>
               <h3 className="text-xl font-semibold mb-2">{title}</h3>
