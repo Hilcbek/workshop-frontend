@@ -67,8 +67,8 @@ const AllBooking = () => {
   };
 
   const totalBookings = bookings?.data || [];
-  const totalPages = Math.ceil(totalBookings.length / LIMIT);
-  const paginatedBookings = totalBookings.slice((page - 1) * LIMIT, page * LIMIT);
+  const totalPages = Math.ceil(totalBookings?.length / LIMIT);
+  const paginatedBookings = totalBookings?.slice((page - 1) * LIMIT, page * LIMIT);
 
   return (
     <Box px={4} py={6}>
