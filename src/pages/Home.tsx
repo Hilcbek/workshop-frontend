@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-[#f0f4ff] via-white to-[#eaf1ff] text-gray-900 px-6 md:px-16 py-12">
-      {/* Hero Section */}
       <motion.section
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -39,7 +38,6 @@ export default function Home() {
         </MUIButton>
       </motion.section>
 
-      {/* Features Section */}
       <section className="mt-24 grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
         {[
           {

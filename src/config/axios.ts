@@ -1,6 +1,6 @@
 import axios from 'axios'
 export const baseURL = axios.create({
-    baseURL : 'http://localhost:3000/api',
+    baseURL : 'https://workshop-backend-j4dm.onrender.com/api',
     withCredentials : true
 })
 // https://workshop-backend-j4dm.onrender.com/api
