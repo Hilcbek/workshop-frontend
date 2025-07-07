@@ -17,8 +17,6 @@ const userSlice = createSlice({
     reducers :{
         LOGOUT :(state) => {
             state.data = null
-            state.isLoggedIn = false
-            state.isLoggedInLoading = false
             state.isError = false
             state.isSuccess = false
             state.isLoading = false
