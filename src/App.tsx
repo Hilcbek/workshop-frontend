@@ -6,24 +6,24 @@ import { Toaster } from 'sonner'
 import type { AppDispatch } from './toolkit/store'
 import { useDispatch } from 'react-redux'
 import { userThunk } from './toolkit/users/thunk'
-import SpinnersComponent from './components/Spinner'
-import RoleBasedRoute from './hooks/RoleBasedRoute'
-import AdminContainer from './pages/Admin/AdminContainer'
-import AnalyticsPage from './pages/Admin/AnalyticsPage'
-import AllBooking from './pages/Admin/AllBooking'
-import AllTimeSlot from './pages/Admin/AllTimeSlot'
-import UpdateTimeSlot from './pages/Admin/UpdateTimeSlot'
-import MyBooking from './pages/MyBooking'
+const SpinnersComponent = lazy(() => import('./components/Spinner'))
+const RoleBasedRoute = lazy(() => import('./hooks/RoleBasedRoute'))
+const AdminContainer = lazy(() => import('./pages/Admin/AdminContainer'))
+const AnalyticsPage = lazy(() => import('./pages/Admin/AnalyticsPage'))
+const AllBooking = lazy(() => import('./pages/Admin/AllBooking'))
+const AllTimeSlot = lazy(() => import('./pages/Admin/AllTimeSlot'))
+const UpdateTimeSlot = lazy(() => import('./pages/Admin/UpdateTimeSlot'))
+const MyBooking = lazy(() => import('./pages/MyBooking'))
 const CreateBookings = lazy(() => import('./pages/CreateBookings'))
 const Container = lazy(() => import('./components/Container'))
 const Home = lazy(() => import('./pages/Home'))
 const Register = lazy(() => import('./pages/Register'))
 const Login = lazy(() => import('./pages/Login'))
-import AddWorkShop from './pages/Admin/AddWorkShop'
-import AddTimeSlot from './pages/Admin/AddTimeSlot'
-import AllWorkShop from './pages/Admin/AllWorkShop'
-import UpdateBooking from './pages/UpdateBooking'
-import UpdateWorkShop from './pages/Admin/UpdateWorkShop'
+const AddWorkShop = lazy(()=> import('./pages/Admin/AddWorkShop'))
+const AddTimeSlot = lazy(()=> import('./pages/Admin/AddTimeSlot'))
+const AllWorkShop = lazy(()=> import('./pages/Admin/AllWorkShop'))
+const UpdateBooking = lazy(()=> import('./pages/UpdateBooking'))
+const UpdateWorkShop = lazy(()=> import('./pages/Admin/UpdateWorkShop'))
 const router = createBrowserRouter([
   {
     path: '/',
