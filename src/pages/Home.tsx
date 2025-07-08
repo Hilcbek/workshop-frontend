@@ -4,7 +4,11 @@ import { motion } from 'framer-motion';
 import { Button as MUIButton } from '@mui/material';
 import { ArrowForward } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import type { RootState } from '../toolkit/store';
+import { useSelector } from 'react-redux';
 export default function Home() {
+  const { data } = useSelector((state: RootState) => state.userSlice)
+  const isLoggedIn = data?.data && data?.data?.length > 0 
   return (
     <main className="md:h-[80vh] bg-gradient-to-br from-[#f0f4ff] via-white to-[#eaf1ff] text-gray-900 px-6 md:px-16 py-12">
       <motion.section
@@ -20,7 +24,11 @@ export default function Home() {
           Effortlessly manage, schedule, and book workshops with our intuitive system.
           Save time. Boost attendance. Deliver excellence.
         </p>
+        <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          ⏳ Please wait a moment
+          This is a free server and may take a few minutes to start up. Thank you for your patience!
 
+        </p>
         <MUIButton
           variant="contained"
           size="large"
@@ -34,7 +42,7 @@ export default function Home() {
             textTransform: 'none',
           }}
         >
-          <Link to={'/register'}>Get Started</Link>
+          <Link to={isLoggedIn ? data?.data[0]?.role === 'admin' ? '/admin' : '/my-bookings' : '/register'}>{isLoggedIn ? data?.data[0]?.role === 'admin' ? 'Go to dashboard' : 'My bookings' : 'Get started' }</Link>
         </MUIButton>
       </motion.section>
 
