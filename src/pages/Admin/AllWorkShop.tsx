@@ -26,7 +26,14 @@ import { useNavigate } from 'react-router-dom';
 
 const WorkshopRow = ({ workshop }: { workshop: workshopProps }) => {
     const [open, setOpen] = useState(false);
-
+    const dispatch : AppDispatch = useDispatch()
+    const {deleting} = useSelector((state: RootState) => state.workShopSlice);
+    const handleWorkShopDelete = async (id: string) => {
+        const confirm = window.confirm('Are you sure you want to delete this workshop?');
+        if (confirm) {
+            await dispatch(workShopThunk.deleteWoshopThunk(Number(id)))
+        }
+    }
     const navigate = useNavigate()
     return (
         <>
@@ -53,7 +60,7 @@ const WorkshopRow = ({ workshop }: { workshop: workshopProps }) => {
                     })} className='cursor-pointer hover:text-teal-500' />
                 </TableCell>
                 <TableCell>
-                    <Delete className='cursor-pointer hover:text-rose-500' />
+                    {deleting ? <CircularProgress size={20} /> : <Delete onClick={() => handleWorkShopDelete(workshop.id)} className='cursor-pointer hover:text-rose-500' />}
                 </TableCell>
             </TableRow>
 

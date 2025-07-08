@@ -19,7 +19,8 @@ export interface initialState {
     data: workshopResponseProps | null
     isLoading: boolean
     isError: boolean
-    isSuccess: boolean
+    isSuccess: boolean,
+    deleting : boolean
 }
 export const workShopSchema = z.object({
     title: z.string(),

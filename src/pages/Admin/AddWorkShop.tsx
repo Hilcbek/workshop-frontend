@@ -7,14 +7,15 @@ import {
   Typography,
   Button,
   Box,
+  CircularProgress,
 } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useForm, Controller } from 'react-hook-form';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import type { workshopInputSchemaType } from '../../toolkit/workshop/types';
-import type { AppDispatch } from '../../toolkit/store';
-import { useDispatch } from 'react-redux';
+import type { AppDispatch, RootState } from '../../toolkit/store';
+import { useDispatch, useSelector } from 'react-redux';
 import { workShopThunk } from '../../toolkit/workshop/thunk';
 
 const AddWorkshop = () => {
@@ -35,7 +36,7 @@ const AddWorkshop = () => {
   const onSubmit = async (data: workshopInputSchemaType) => {
     await dispatch(workShopThunk.createWorkShopThunk(data))
   };
-
+  const {isLoading} = useSelector((state:RootState) => state.workShopSlice)
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Box
@@ -138,6 +139,7 @@ const AddWorkshop = () => {
                 />
               </Box>
               <Button
+              disabled={isLoading}
                 fullWidth
                 type="submit"
                 variant="contained"
@@ -153,7 +155,7 @@ const AddWorkshop = () => {
                   },
                 }}
               >
-                Create Workshop
+                {isLoading ? <CircularProgress size={24} /> : 'Add Workshop'}
               </Button>
             </form>
           </CardContent>

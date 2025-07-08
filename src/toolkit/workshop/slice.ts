@@ -7,7 +7,8 @@ const initialState: initialState = {
     data: null,
     isLoading: false,
     isError: false,
-    isSuccess: false
+    isSuccess: false,
+    deleting : false
 }
 const workShopSlice = createSlice({
     name: 'workshop',
@@ -55,6 +56,26 @@ const workShopSlice = createSlice({
             state.data = action.payload
         })
         builder.addCase(workShopThunk.getSingledeleteWoshopThunk.rejected, (state, action) => {
+            state.isLoading = false
+            state.isError = true
+            state.isSuccess = false
+            toast.error(action.payload as string)
+        })
+        builder.addCase(workShopThunk.deleteWoshopThunk.pending, (state) => {
+            state.isLoading =true
+        })
+        builder.addCase(workShopThunk.deleteWoshopThunk.fulfilled, (state, action: PayloadAction<workshopResponseProps> ) => {
+            state.isLoading = false
+            state.isSuccess = true
+            state.isError = false
+            if (state.data) {
+                state.data.data = state.data.data.filter((data) => {
+                  return data.id !== action.payload?.data[0].id;
+                });
+              }
+              
+        })
+        builder.addCase(workShopThunk.deleteWoshopThunk.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.isSuccess = false

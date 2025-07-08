@@ -49,7 +49,7 @@ const updateWoshopThunk = createAsyncThunk(
 )
 const deleteWoshopThunk = createAsyncThunk(
     'timeSlot/deleteWorkShop',
-    async (id : string, thunkApi) => {
+    async (id : number, thunkApi) => {
         try {
             const response = await workshopApi.deleteWorkshop(id);
             

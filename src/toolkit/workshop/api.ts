@@ -21,7 +21,7 @@ const updateWorkshop = async (id : string,data: updateWorkShopSchemaType) => {
   const response = await baseURL.patch(`/workshops/${id}`, data, getAuthHeader())
   return response.data
 }
-const deleteWorkshop = async (id: string) => {
+const deleteWorkshop = async (id: number) => {
   const response = await baseURL.delete(`/workshops/${id}`, getAuthHeader())
   return response.data
 }
