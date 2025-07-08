@@ -10,7 +10,7 @@ export default function Home() {
   const { data } = useSelector((state: RootState) => state.userSlice)
   const isLoggedIn = data?.data && data?.data?.length > 0 
   return (
-    <main className="md:h-[80vh] bg-gradient-to-br from-[#f0f4ff] via-white to-[#eaf1ff] text-gray-900 px-6 md:px-16 py-12">
+    <main className="md:h-[80vh] font-manrope bg-gradient-to-br from-[#f0f4ff] via-white to-[#eaf1ff] text-gray-900 px-6 md:px-16 py-12">
       <motion.section
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -24,7 +24,7 @@ export default function Home() {
           Effortlessly manage, schedule, and book workshops with our intuitive system.
           Save time. Boost attendance. Deliver excellence.
         </p>
-        <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl font-semibold animate-bounce text-rose-600 mb-8 max-w-2xl mx-auto">
           ⏳ Please wait a moment
           This is a free server and may take a few minutes to start up. Thank you for your patience!
 
