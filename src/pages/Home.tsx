@@ -32,17 +32,17 @@ export default function Home() {
         <MUIButton
           variant="contained"
           size="large"
-          endIcon={<ArrowForward />}
           sx={{
             bgcolor: '#0070f3',
             '&:hover': { bgcolor: '#005ecb' },
             fontWeight: 600,
-            px: 4,
+            p:0,
             borderRadius: '12px',
             textTransform: 'none',
           }}
         >
-          <Link to={isLoggedIn ? data?.data[0]?.role === 'admin' ? '/admin' : '/my-bookings' : '/register'}>{isLoggedIn ? data?.data[0]?.role === 'admin' ? 'Go to dashboard' : 'My bookings' : 'Get started' }</Link>
+          <Link className='p-3' to={isLoggedIn ? data?.data[0]?.role === 'admin' ? '/admin' : '/my-bookings' : '/register'}>{isLoggedIn ? data?.data[0]?.role === 'admin' ? 'Go to dashboard' : 'My bookings' : 'Get started'}  <ArrowForward /></Link>
+         
         </MUIButton>
       </motion.section>
 
